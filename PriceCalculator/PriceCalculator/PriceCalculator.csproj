@@ -40,10 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basket.cs" />
-    <Compile Include="Purchaseables\Bread.cs" />
-    <Compile Include="Purchaseables\Butter.cs" />
-    <Compile Include="Purchaseables\IPurchaseable.cs" />
-    <Compile Include="Purchaseables\Milk.cs" />
+    <Compile Include="Catalogue\ShopCatalogue.cs" />
+    <Compile Include="Catalogue\ItemNotFound.cs" />
+    <Compile Include="Catalogue\Purchaseables\Bread.cs" />
+    <Compile Include="Catalogue\Purchaseables\Butter.cs" />
+    <Compile Include="Catalogue\Purchaseables\IPurchaseable.cs" />
+    <Compile Include="Catalogue\Purchaseables\Milk.cs" />
+    <Compile Include="Catalogue\IPriceLookup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Checkout.cs" />
     <Compile Include="Price.cs" />

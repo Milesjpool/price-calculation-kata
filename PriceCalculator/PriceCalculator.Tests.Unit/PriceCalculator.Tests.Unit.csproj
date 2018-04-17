@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasketTests.cs" />
+    <Compile Include="Catalogue\ItemCatalogueTests.cs" />
     <Compile Include="CheckoutTests.cs" />
     <Compile Include="PriceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
