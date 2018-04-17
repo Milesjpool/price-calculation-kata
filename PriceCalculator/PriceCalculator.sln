@@ -1,13 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator", "PriceCalculator\PriceCalculator.csproj", "{D4C64295-556A-44A9-A497-9370BA9C7559}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator.Tests.Unit", "PriceCalculator.Tests.Unit\PriceCalculator.Tests.Unit.csproj", "{5598C45F-AB92-4A70-994C-E48664E18F3B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCalculator.Tests.Acceptance", "PriceCalculator.Tests.Acceptance\PriceCalculator.Tests.Acceptance.csproj", "{4439E417-11C3-463A-9729-E0CAABF8998D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A7D9A295-E7F1-4559-AEEA-86DB69E588E9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
