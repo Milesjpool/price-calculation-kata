@@ -5,6 +5,6 @@ namespace PriceCalculator.Catalogue.Deals
 {
     public interface IDeal
     {
-        int TimesApplicable(Collection<IPurchaseable> purchases);
+        int TimesEligible(Collection<IPurchaseable> purchases);
     }
 }

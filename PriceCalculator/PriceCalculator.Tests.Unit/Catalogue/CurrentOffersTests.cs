@@ -18,7 +18,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
             var unit = new CurrentOffers();
 
             var deal = Substitute.For<IDeal>();
-            deal.TimesApplicable(items).Returns(0);
+            deal.TimesEligible(items).Returns(0);
             unit.RegisterDeal(deal, 100);
 
             Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(0));
@@ -31,7 +31,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
             var unit = new CurrentOffers();
 
             var deal = Substitute.For<IDeal>();
-            deal.TimesApplicable(items).Returns(1);
+            deal.TimesEligible(items).Returns(1);
             var discount = 100;
             unit.RegisterDeal(deal, discount);
 
@@ -46,7 +46,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
 
             var deal = Substitute.For<IDeal>();
             var timesApplicable = 2;
-            deal.TimesApplicable(items).Returns(timesApplicable);
+            deal.TimesEligible(items).Returns(timesApplicable);
             var discount = 100;
             unit.RegisterDeal(deal, discount);
 

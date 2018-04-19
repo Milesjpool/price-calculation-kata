@@ -15,7 +15,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.TimesApplicable(items), Is.EqualTo(0));   
+            Assert.That(unit.TimesEligible(items), Is.EqualTo(0));   
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread(), new Butter() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));   
+            Assert.That(unit.TimesEligible(items), Is.EqualTo(1));   
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread(), new Butter(), new Bread() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));   
+            Assert.That(unit.TimesEligible(items), Is.EqualTo(1));   
         } 
         
         [Test]
@@ -45,7 +45,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.TimesApplicable(items), Is.EqualTo(2));   
+            Assert.That(unit.TimesEligible(items), Is.EqualTo(2));   
         }
     }
 }

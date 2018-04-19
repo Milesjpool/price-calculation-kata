@@ -25,7 +25,7 @@ namespace PriceCalculator.Catalogue
 
         private static Discount GetApplicableDiscount(Collection<IPurchaseable> purchases, KeyValuePair<IDeal, int> deal)
         {
-            return new Discount(deal.Key.TimesApplicable(purchases) * deal.Value);
+            return new Discount(deal.Key.TimesEligible(purchases) * deal.Value);
         }
 
         public void RegisterDeal(IDeal deal, int discount)

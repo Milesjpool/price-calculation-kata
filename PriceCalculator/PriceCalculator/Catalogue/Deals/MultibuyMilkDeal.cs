@@ -7,7 +7,7 @@ namespace PriceCalculator.Catalogue.Deals
 {
     public class MultibuyMilkDeal : IDeal
     {
-        public int TimesApplicable(Collection<IPurchaseable> purchases)
+        public int TimesEligible(Collection<IPurchaseable> purchases)
         {
             return MilkCount(purchases)/4;
         }
