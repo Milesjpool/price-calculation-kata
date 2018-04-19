@@ -1,10 +1,12 @@
 ﻿using NUnit.Framework;
 using PriceCalculator.Catalogue;
+using PriceCalculator.Catalogue.Deals;
 using PriceCalculator.Catalogue.Purchaseables;
+using PriceCalculator.Pricing;
 
 namespace PriceCalculator.Tests.Acceptance.Scenarios
 {
-    public partial class BasketPricingWithNoDeals
+    public partial class BasketPricing
     {
         private Basket _basket;
         private Price _total;
@@ -14,7 +16,10 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         public void BeforeEach()
         {
             _basket = new Basket();
-            _checkout = new Checkout(new ShopCatalogue());           
+            var shopCatalogue = new ShopCatalogue();
+            var currentOffers = new CurrentOffers();
+            currentOffers.RegisterDeal(new BreadAndButterDeal(), shopCatalogue.LookupPrice(new Bread()).NetPence/2);
+            _checkout = new Checkout(shopCatalogue, currentOffers);           
         }
 
         private void GivenTheBasketHasBread()
@@ -34,7 +39,7 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         private void WhenITotalTheBasket()
         {
             _checkout.Scan(_basket);
-            _total = _checkout.Total;
+            _total = _checkout.GetTotal();
         }
 
         private void ThenTheTotalShouldBe(double expectedTotal)
@@ -42,6 +47,6 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
             Assert.That(_total.InPounds(), Is.EqualTo(expectedTotal));
         }
 
-        private BasketPricingWithNoDeals And { get { return this; } }
+        private BasketPricing And { get { return this; } }
     }
 }

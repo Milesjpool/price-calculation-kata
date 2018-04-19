@@ -40,6 +40,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basket.cs" />
+    <Compile Include="Catalogue\Deals\BreadAndButterDeal.cs" />
+    <Compile Include="Catalogue\CurrentOffers.cs" />
+    <Compile Include="Catalogue\Deals\IDeal.cs" />
     <Compile Include="Catalogue\ShopCatalogue.cs" />
     <Compile Include="Catalogue\ItemNotFound.cs" />
     <Compile Include="Catalogue\Purchaseables\Bread.cs" />
@@ -47,9 +50,17 @@
     <Compile Include="Catalogue\Purchaseables\IPurchaseable.cs" />
     <Compile Include="Catalogue\Purchaseables\Milk.cs" />
     <Compile Include="Catalogue\IPriceLookup.cs" />
+    <Compile Include="Catalogue\IDiscounts.cs" />
+    <Compile Include="Pricing\Discount.cs" />
+    <Compile Include="Pricing\GBP.cs" />
+    <Compile Include="Pricing\ICurrency.cs" />
+    <Compile Include="Pricing\IPriceIncrement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Checkout.cs" />
-    <Compile Include="Price.cs" />
+    <Compile Include="Pricing\Price.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

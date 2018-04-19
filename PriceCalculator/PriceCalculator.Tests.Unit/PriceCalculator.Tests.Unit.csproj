@@ -60,9 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasketTests.cs" />
+    <Compile Include="Catalogue\deals\BreadAndButterDealTests.cs" />
     <Compile Include="Catalogue\ItemCatalogueTests.cs" />
     <Compile Include="CheckoutTests.cs" />
-    <Compile Include="PriceTests.cs" />
+    <Compile Include="Catalogue\CurrentOffersTests.cs" />
+    <Compile Include="Pricing\DiscountTests.cs" />
+    <Compile Include="Pricing\PriceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

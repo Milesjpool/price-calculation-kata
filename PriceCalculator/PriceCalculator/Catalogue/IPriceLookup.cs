@@ -1,4 +1,5 @@
 using PriceCalculator.Catalogue.Purchaseables;
+using PriceCalculator.Pricing;
 
 namespace PriceCalculator.Catalogue
 {

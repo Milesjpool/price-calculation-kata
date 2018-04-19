@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using PriceCalculator.Catalogue.Purchaseables;
+using PriceCalculator.Pricing;
 
 namespace PriceCalculator.Catalogue
 {

@@ -1,28 +1,44 @@
-﻿using PriceCalculator.Catalogue;
+﻿using System.Collections.ObjectModel;
+using PriceCalculator.Catalogue;
 using PriceCalculator.Catalogue.Purchaseables;
+using PriceCalculator.Pricing;
 
 namespace PriceCalculator
 {
     public class Checkout
     {
         private readonly ICatalogue _itemCatalogue;
-        public Price Total { get; private set; }
+        private readonly IDiscounts _discounts;
+        private readonly Collection<IPurchaseable> _scannedItems;
+        private Price _subtotal;
 
-        public Checkout(ICatalogue catalogue)
+        public Checkout(ICatalogue catalogue, IDiscounts discounts)
         {
-            Total = new Price();
+            _subtotal = new Price();
+            _scannedItems = new Collection<IPurchaseable>();
             _itemCatalogue = catalogue;
+            _discounts = discounts;
         }
 
         public void Scan(IScannable basket)
         {
-            var item = basket.TakeItem();
-            while (item != null)
+            for (var item = basket.TakeItem(); item != null; item = basket.TakeItem())
             {
-                var itemPrice = _itemCatalogue.LookupPrice(item);
-                Total = Total.Add(itemPrice);
-                item = basket.TakeItem();
+                ScanItem(item);
             }
+        }
+
+        private void ScanItem(IPurchaseable item)
+        {
+            var itemPrice = _itemCatalogue.LookupPrice(item);
+            _subtotal = _subtotal.Add(itemPrice);
+            _scannedItems.Add(item);
+        }
+
+        public Price GetTotal()
+        {
+            IPriceIncrement discount = _discounts.GetApplicable(_scannedItems);
+            return _subtotal.Add(discount);
         }
     }
 }

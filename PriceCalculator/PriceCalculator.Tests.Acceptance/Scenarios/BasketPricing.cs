@@ -2,10 +2,10 @@
 
 namespace PriceCalculator.Tests.Acceptance.Scenarios
 {
-    public partial class BasketPricingWithNoDeals
+    public partial class BasketPricing
     {
         [Test]
-        public void Bread_Butter_and_Milk()
+        public void No_deals_with_bread_butter_and_milk()
         {
             GivenTheBasketHasBread();
             And.GivenTheBasketHasButter();
@@ -15,7 +15,7 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         }
         
         [Test]
-        public void Two_Bread_Two_Milk_and_a_Butter()
+        public void No_deals_with_two_bread_two_milk_and_butter()
         {
             GivenTheBasketHasBread();
             And.GivenTheBasketHasBread();
@@ -24,6 +24,17 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
             And.GivenTheBasketHasButter();
             WhenITotalTheBasket();
             ThenTheTotalShouldBe(5.10);
+        }
+
+        [Test]
+        public void Half_price_bread_with_bread_and_two_butter()
+        {
+            GivenTheBasketHasButter();
+            And.GivenTheBasketHasButter();
+            And.GivenTheBasketHasBread();
+            And.GivenTheBasketHasBread();
+            WhenITotalTheBasket();
+            ThenTheTotalShouldBe(3.10);
         }
     }
 }
