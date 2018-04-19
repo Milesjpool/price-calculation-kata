@@ -12,39 +12,45 @@ namespace PriceCalculator.Tests.Unit.Catalogue
     internal class CurrentOffersTests
     {
         [Test]
-        public void It_gives_no_discount_when_no_items_Are_bought()
+        public void It_does_not_give_discount_when_deal_does_not_apply()
         {
-            var items = new Collection<IPurchaseable>();
-            var unit = new CurrentOffers();
-
-            Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(0));
-        }
-        
-        [Test]
-        public void It_gives_discount_when_deal_applies()
-        {
-            var items = new Collection<IPurchaseable> {new Butter(), new Bread(), new Butter()};
+            var items = new Collection<IPurchaseable> { new Bread(), new Butter()};
             var unit = new CurrentOffers();
 
             var deal = Substitute.For<IDeal>();
-            deal.DealApplies(items).Returns(true);
+            deal.TimesApplicable(items).Returns(0);
+            unit.RegisterDeal(deal, 100);
+
+            Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void It_gives_discount_when_deal_applies()
+        {
+            var items = new Collection<IPurchaseable> { new Bread(), new Butter()};
+            var unit = new CurrentOffers();
+
+            var deal = Substitute.For<IDeal>();
+            deal.TimesApplicable(items).Returns(1);
             var discount = 100;
             unit.RegisterDeal(deal, discount);
 
             Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(-discount));
         }
-        
+
         [Test]
-        public void It_does_not_give_discount_when_deal_does_not_apply()
+        public void It_gives_discount_when_deal_applies_twice()
         {
-            var items = new Collection<IPurchaseable> {new Butter(), new Bread(), new Butter()};
+            var items = new Collection<IPurchaseable> { new Bread(), new Butter()};
             var unit = new CurrentOffers();
 
             var deal = Substitute.For<IDeal>();
-            deal.DealApplies(items).Returns(false);
-            unit.RegisterDeal(deal, 100);
+            var timesApplicable = 2;
+            deal.TimesApplicable(items).Returns(timesApplicable);
+            var discount = 100;
+            unit.RegisterDeal(deal, discount);
 
-            Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(0));
+            Assert.That(unit.GetApplicable(items).NetPence, Is.EqualTo(-discount * timesApplicable));
         }
     }
 }

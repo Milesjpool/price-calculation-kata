@@ -1,4 +1,6 @@
-﻿namespace PriceCalculator.Pricing
+﻿using PriceCalculator.Pricing.Currencies;
+
+namespace PriceCalculator.Pricing
 {
     public class Price : IPriceIncrement
     {

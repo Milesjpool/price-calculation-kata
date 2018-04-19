@@ -1,4 +1,4 @@
-﻿namespace PriceCalculator.Pricing
+﻿namespace PriceCalculator.Pricing.Currencies
 {
     internal interface ICurrency
     {

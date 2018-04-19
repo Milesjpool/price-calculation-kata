@@ -14,7 +14,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Milk(), new Milk(), new Milk()};
             var unit = new MultibuyMilkDeal();
 
-            Assert.That(unit.DealApplies(items), Is.False);
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(0));
         }
 
         [Test]
@@ -23,7 +23,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Milk(), new Milk(), new Milk(), new Milk() };
             var unit = new MultibuyMilkDeal();
 
-            Assert.That(unit.DealApplies(items), Is.True);
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));
         }
 
         [Test]
@@ -32,7 +32,18 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Milk(), new Milk(), new Milk(), new Milk(), new Milk() };
             var unit = new MultibuyMilkDeal();
 
-            Assert.That(unit.DealApplies(items), Is.True);
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));
+        }
+
+        [Test]
+        public void It_applies_twice_to_nine_milks_and_a_butter()
+        {
+            var items = new Collection<IPurchaseable> { 
+                new Butter(), new Milk(), new Milk(), new Milk(), new Milk(),
+                new Milk(), new Milk(), new Milk(), new Milk(), new Milk() };
+            var unit = new MultibuyMilkDeal();
+
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(2));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace PriceCalculator
+﻿namespace PriceCalculator.Pricing
 {
     public interface IPriceIncrement
     {

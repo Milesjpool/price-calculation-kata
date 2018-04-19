@@ -15,7 +15,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.DealApplies(items), Is.False);   
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(0));   
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread(), new Butter() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.DealApplies(items), Is.True);   
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));   
         }
 
         [Test]
@@ -33,7 +33,19 @@ namespace PriceCalculator.Tests.Unit.Catalogue.deals
             var items = new Collection<IPurchaseable> { new Butter(), new Bread(), new Butter(), new Bread() };
             var unit = new BreadAndButterDeal();
 
-            Assert.That(unit.DealApplies(items), Is.True);   
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(1));   
+        } 
+        
+        [Test]
+        public void It_applies_twice_to_four_breads_and_four_butter()
+        {
+            var items = new Collection<IPurchaseable> { 
+                new Butter(), new Butter(), new Butter(), new Butter(),
+                new Bread(), new Bread(), new Bread(), new Bread() 
+            };
+            var unit = new BreadAndButterDeal();
+
+            Assert.That(unit.TimesApplicable(items), Is.EqualTo(2));   
         }
     }
 }

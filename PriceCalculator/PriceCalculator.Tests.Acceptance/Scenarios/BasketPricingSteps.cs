@@ -27,14 +27,33 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         {
             _basket.Put(new Bread());
         }
-        
+
+        private void GivenTheBasketHasBread(int breads)
+        {
+            for (int i = 0; i < breads; i++)
+                GivenTheBasketHasBread();
+        }
+
         private void GivenTheBasketHasButter()
         {
             _basket.Put(new Butter());
         }
+
+        private void GivenTheBasketHasButter(int butters)
+        {
+            for (int i = 0; i < butters; i++)
+                GivenTheBasketHasButter();
+        }
+
         private void GivenTheBasketHasMilk()
         {
             _basket.Put(new Milk());
+        }
+
+        private void GivenTheBasketHasMilk(int milks)
+        {
+            for (int i = 0; i < milks; i++)
+                GivenTheBasketHasMilk();
         }
 
         private void WhenITotalTheBasket()

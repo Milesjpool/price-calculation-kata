@@ -19,9 +19,13 @@ namespace PriceCalculator.Catalogue
 
         public Discount GetApplicable(Collection<IPurchaseable> purchases)
         {
-            var applicableDeals = _deals.Where(dealDiscount => dealDiscount.Key.DealApplies(purchases));
-            var applicableDiscount = applicableDeals.Aggregate(_noDiscount, (currentDiscount, deal) => currentDiscount.Add(new Discount(deal.Value)));
+            var applicableDiscount = _deals.Aggregate(_noDiscount, (currentDiscount, deal) => currentDiscount.Add(GetApplicableDiscount(purchases, deal)));
             return applicableDiscount;
+        }
+
+        private static Discount GetApplicableDiscount(Collection<IPurchaseable> purchases, KeyValuePair<IDeal, int> deal)
+        {
+            return new Discount(deal.Key.TimesApplicable(purchases) * deal.Value);
         }
 
         public void RegisterDeal(IDeal deal, int discount)

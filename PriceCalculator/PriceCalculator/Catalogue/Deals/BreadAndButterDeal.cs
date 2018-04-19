@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using PriceCalculator.Catalogue.Purchaseables;
 
@@ -6,11 +8,19 @@ namespace PriceCalculator.Catalogue.Deals
 {
     public class BreadAndButterDeal : IDeal
     {
-        public bool DealApplies(Collection<IPurchaseable> purchases)
+        public int TimesApplicable(Collection<IPurchaseable> purchases)
         {
-            var hasBread = purchases.Count(p => p.GetType() == typeof (Bread)) >= 1;
-            var hasButter = purchases.Count(p => p.GetType() == typeof (Butter)) >= 2;
-            return hasBread && hasButter;
+            return Math.Min(ButterCount(purchases)/2, BreadCount(purchases));
+        }
+
+        private static int ButterCount(IEnumerable<IPurchaseable> purchases)
+        {
+            return purchases.Count(p => p.GetType() == typeof (Butter));
+        }
+
+        private static int BreadCount(IEnumerable<IPurchaseable> purchases)
+        {
+            return purchases.Count(p => p.GetType() == typeof (Bread));
         }
     }
 }

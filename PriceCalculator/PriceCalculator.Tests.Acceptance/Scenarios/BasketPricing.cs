@@ -17,10 +17,8 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         [Test]
         public void No_deals_with_two_bread_two_milk_and_butter()
         {
-            GivenTheBasketHasBread();
-            And.GivenTheBasketHasBread();
-            And.GivenTheBasketHasMilk();
-            And.GivenTheBasketHasMilk();
+            GivenTheBasketHasBread(2);
+            And.GivenTheBasketHasMilk(2);
             And.GivenTheBasketHasButter();
             WhenITotalTheBasket();
             ThenTheTotalShouldBe(5.10);
@@ -29,10 +27,8 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         [Test]
         public void Half_price_bread_with_bread_and_two_butter()
         {
-            GivenTheBasketHasButter();
-            And.GivenTheBasketHasButter();
-            And.GivenTheBasketHasBread();
-            And.GivenTheBasketHasBread();
+            GivenTheBasketHasButter(2);
+            And.GivenTheBasketHasBread(2);
             WhenITotalTheBasket();
             ThenTheTotalShouldBe(3.10);
         } 
@@ -40,12 +36,19 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
         [Test]
         public void Free_milk_with_four_milks()
         {
-            GivenTheBasketHasMilk();
-            And.GivenTheBasketHasMilk();
-            And.GivenTheBasketHasMilk();
-            And.GivenTheBasketHasMilk();
+            GivenTheBasketHasMilk(4);
             WhenITotalTheBasket();
             ThenTheTotalShouldBe(3.45);
+        }
+        
+        [Test]
+        public void Two_free_milks_and_half_price_bread()
+        {
+            GivenTheBasketHasMilk(8);
+            And.GivenTheBasketHasBread();
+            And.GivenTheBasketHasButter(2);
+            WhenITotalTheBasket();
+            ThenTheTotalShouldBe(9);
         }
     }
 }
