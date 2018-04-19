@@ -10,14 +10,14 @@ namespace PriceCalculator.Tests.Unit.Pricing
         public void It_can_be_read_in_pounds_and_pence()
         {
             var unit = new Price(159);
-            Assert.That(unit.InPounds(), Is.EqualTo(1.59));
+            Assert.That(unit.AsCurrency(), Is.EqualTo(1.59));
         }
         
         [Test] 
         public void It_is_initially_zero()
         {
             var unit = new Price();
-            Assert.That(unit.InPounds(), Is.EqualTo(0));
+            Assert.That(unit.AsCurrency(), Is.EqualTo(0));
         }
         
         [Test]
@@ -25,11 +25,11 @@ namespace PriceCalculator.Tests.Unit.Pricing
         {
             var unit = new Price(100);
             var other = new Price(200);
-            var expectedPrice = unit.InPounds() + other.InPounds();
+            var expectedPrice = unit.AsCurrency() + other.AsCurrency();
             
             var actualPrice = unit.Add(other);
             
-            Assert.That(actualPrice.InPounds(), Is.EqualTo(expectedPrice));
+            Assert.That(actualPrice.AsCurrency(), Is.EqualTo(expectedPrice));
         }
         
         [Test]
@@ -37,11 +37,11 @@ namespace PriceCalculator.Tests.Unit.Pricing
         {
             var unit = new Price(100);
             var discount = new Discount(50);
-            var expectedPrice = unit.InPounds() + discount.InPounds();
+            var expectedPrice = unit.AsCurrency() + discount.InCurrency();
             
             var actualPrice = unit.Add(discount);
             
-            Assert.That(actualPrice.InPounds(), Is.EqualTo(expectedPrice));
+            Assert.That(actualPrice.AsCurrency(), Is.EqualTo(expectedPrice));
         }
     }
 }

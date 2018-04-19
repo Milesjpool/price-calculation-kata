@@ -12,7 +12,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
         {
             var unit = new ShopCatalogue();
             IPurchaseable item = new Bread();
-            Assert.That(unit.LookupPrice(item).InPounds(), Is.EqualTo(1));
+            Assert.That(unit.LookupPrice(item).AsCurrency(), Is.EqualTo(1));
         }
         
         [Test]
@@ -20,7 +20,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
         {
             var unit = new ShopCatalogue();
             IPurchaseable item = new Butter();
-            Assert.That(unit.LookupPrice(item).InPounds(), Is.EqualTo(0.8));
+            Assert.That(unit.LookupPrice(item).AsCurrency(), Is.EqualTo(0.8));
         }
         
         [Test]
@@ -28,7 +28,7 @@ namespace PriceCalculator.Tests.Unit.Catalogue
         {
             var unit = new ShopCatalogue();
             IPurchaseable item = new Milk();
-            Assert.That(unit.LookupPrice(item).InPounds(), Is.EqualTo(1.15));
+            Assert.That(unit.LookupPrice(item).AsCurrency(), Is.EqualTo(1.15));
         }
     }
 }

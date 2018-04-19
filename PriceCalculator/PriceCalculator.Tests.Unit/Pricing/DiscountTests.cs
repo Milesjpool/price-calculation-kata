@@ -10,7 +10,7 @@ namespace PriceCalculator.Tests.Unit.Pricing
         public void It_has_a_value()
         {
             var unit = new Discount(50);
-            Assert.That(unit.InPounds(), Is.EqualTo(-0.5));
+            Assert.That(unit.InCurrency(), Is.EqualTo(-0.5));
         }  
         
         [Test]
@@ -18,7 +18,7 @@ namespace PriceCalculator.Tests.Unit.Pricing
         {
             var unit = new Discount(50);
             var other = new Discount(30);
-            Assert.That(unit.Add(other).InPounds(), Is.EqualTo(-0.8));
+            Assert.That(unit.Add(other).InCurrency(), Is.EqualTo(-0.8));
         }
     }
 }

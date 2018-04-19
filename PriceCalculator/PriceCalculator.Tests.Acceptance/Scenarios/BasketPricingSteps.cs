@@ -64,7 +64,7 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
 
         private void ThenTheTotalShouldBe(double expectedTotal)
         {
-            Assert.That(_total.InPounds(), Is.EqualTo(expectedTotal));
+            Assert.That(_total.AsCurrency(), Is.EqualTo(expectedTotal));
         }
 
         private BasketPricing And { get { return this; } }

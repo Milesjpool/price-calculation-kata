@@ -26,7 +26,7 @@ namespace PriceCalculator.Tests.Unit
             var unit = new Checkout(_itemCatalogue, _discounts);
             _discounts.GetApplicable(Arg.Any<Collection<IPurchaseable>>()).Returns(new Discount(0));            
 
-            Assert.That(unit.GetTotal().InPounds(), Is.EqualTo(0));
+            Assert.That(unit.GetTotal().AsCurrency(), Is.EqualTo(0));
         }
         
         [Test]
@@ -40,8 +40,8 @@ namespace PriceCalculator.Tests.Unit
 
             unit.Scan(_basket);
 
-            var expected = _item1Price.InPounds() + _item2Price.InPounds();
-            Assert.That(unit.GetTotal().InPounds(), Is.EqualTo(expected));
+            var expected = _item1Price.AsCurrency() + _item2Price.AsCurrency();
+            Assert.That(unit.GetTotal().AsCurrency(), Is.EqualTo(expected));
         }
         
         [Test]
@@ -54,8 +54,8 @@ namespace PriceCalculator.Tests.Unit
 
             unit.Scan(_basket);
 
-            var expected = _item1Price.InPounds() + _discountValue.InPounds();
-            Assert.That(unit.GetTotal().InPounds(), Is.EqualTo(expected));
+            var expected = _item1Price.AsCurrency() + _discountValue.InCurrency();
+            Assert.That(unit.GetTotal().AsCurrency(), Is.EqualTo(expected));
         }
 
         [Test]

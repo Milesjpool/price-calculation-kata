@@ -17,7 +17,7 @@ namespace PriceCalculator.Pricing
             NetPence = pence;
         }
 
-        public decimal InPounds()
+        public decimal AsCurrency()
         {
             return Currency.FromPence(NetPence);
         }
