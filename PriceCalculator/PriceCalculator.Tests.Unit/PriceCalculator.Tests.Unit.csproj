@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BasketTests.cs" />
     <Compile Include="Catalogue\deals\BreadAndButterDealTests.cs" />
+    <Compile Include="Catalogue\deals\MultibuyMilkDeal.cs" />
     <Compile Include="Catalogue\ItemCatalogueTests.cs" />
     <Compile Include="CheckoutTests.cs" />
     <Compile Include="Catalogue\CurrentOffersTests.cs" />

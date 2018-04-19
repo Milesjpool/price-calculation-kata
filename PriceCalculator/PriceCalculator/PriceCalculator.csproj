@@ -43,6 +43,7 @@
     <Compile Include="Catalogue\Deals\BreadAndButterDeal.cs" />
     <Compile Include="Catalogue\CurrentOffers.cs" />
     <Compile Include="Catalogue\Deals\IDeal.cs" />
+    <Compile Include="Catalogue\Deals\MultibuyMilkDeal.cs" />
     <Compile Include="Catalogue\ShopCatalogue.cs" />
     <Compile Include="Catalogue\ItemNotFound.cs" />
     <Compile Include="Catalogue\Purchaseables\Bread.cs" />

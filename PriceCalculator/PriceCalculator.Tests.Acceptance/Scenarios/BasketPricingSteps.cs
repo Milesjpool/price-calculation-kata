@@ -19,6 +19,7 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
             var shopCatalogue = new ShopCatalogue();
             var currentOffers = new CurrentOffers();
             currentOffers.RegisterDeal(new BreadAndButterDeal(), shopCatalogue.LookupPrice(new Bread()).NetPence/2);
+            currentOffers.RegisterDeal(new MultibuyMilkDeal(), shopCatalogue.LookupPrice(new Milk()).NetPence);
             _checkout = new Checkout(shopCatalogue, currentOffers);           
         }
 

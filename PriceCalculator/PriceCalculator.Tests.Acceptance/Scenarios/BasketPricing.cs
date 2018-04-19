@@ -35,6 +35,17 @@ namespace PriceCalculator.Tests.Acceptance.Scenarios
             And.GivenTheBasketHasBread();
             WhenITotalTheBasket();
             ThenTheTotalShouldBe(3.10);
+        } 
+        
+        [Test]
+        public void Free_milk_with_four_milks()
+        {
+            GivenTheBasketHasMilk();
+            And.GivenTheBasketHasMilk();
+            And.GivenTheBasketHasMilk();
+            And.GivenTheBasketHasMilk();
+            WhenITotalTheBasket();
+            ThenTheTotalShouldBe(3.45);
         }
     }
 }
